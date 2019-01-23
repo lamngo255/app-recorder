@@ -1,0 +1,90 @@
+﻿<Window x:Class="MouseKeyPlayback.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MouseKeyPlayback"
+        mc:Ignorable="d"
+        Title="App Recorder" Height="484.465" Width="430" Loaded="Window_Loaded" Closed="Window_Closed">
+    <Border Padding="5">
+        <StackPanel>
+            <Grid Margin="0 0 0 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btnRecord" 
+                        Grid.Column="0" 
+                        Margin="0 0 5 0"
+                        Background="Transparent"
+                        Click="BtnRecord_Click"
+                        BorderThickness="0">
+                    <StackPanel>
+                        <Image Source="Images/record.png"></Image>
+                        <TextBlock TextAlignment="Center" Margin="0">Record</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnPlayback" 
+                        Grid.Column="1" 
+                        Margin="0 0 5 0"
+                        Background="Transparent"
+                        Click="BtnPlayback_Click"
+                        BorderThickness="0">
+                    <StackPanel>
+                        <Image Source="Images/play.png"></Image>
+                        <TextBlock TextAlignment="Center">Play</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnStop" 
+                        Grid.Column="2" 
+                        Margin="0 0 5 0"
+                        Background="Transparent"
+                        Click="BtnStop_Click"
+                        BorderThickness="0">
+                    <StackPanel>
+                        <Image Source="Images/stop.png"></Image>
+                        <TextBlock TextAlignment="Center">Stop</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnImport" 
+                        Grid.Column="3" 
+                        Margin="0 0 5 0"
+                        Background="Transparent"
+                        BorderThickness="0">
+                    <StackPanel>
+                        <Image Source="Images/import.png"></Image>
+                        <TextBlock TextAlignment="Center">Import</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnExport" 
+                        Grid.Column="4" 
+                        Margin="0 0 5 0"
+                        Background="Transparent"
+                        BorderThickness="0">
+                    <StackPanel>
+                        <Image Source="Images/export.png"></Image>
+                        <TextBlock TextAlignment="Center">Export</TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <ListView x:Name="listView"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible"
+                      ScrollViewer.CanContentScroll="True" Height="314" Margin="0,0,0.2,0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="60"/>
+                        <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Content}" Width="260"/>
+                        <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}" Width="80"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <Label x:Name="countRecord" Content="0 record(s)"></Label>
+        </StackPanel>
+    </Border>
+</Window>
