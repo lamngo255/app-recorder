@@ -5,15 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MouseKeyPlayback"
         mc:Ignorable="d"
-        Title="App Recorder" Height="484.465" Width="430" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="App Recorder" Height="513.265" Width="800" Loaded="Window_Loaded" Closed="Window_Closed">
     <Border Padding="5">
         <StackPanel>
             <Grid Margin="0 0 0 10">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="85"/>
+                    <ColumnDefinition Width="85"/>
+                    <ColumnDefinition Width="85"/>
+                    <ColumnDefinition Width="85"/>
+                    <ColumnDefinition Width="85"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
@@ -70,21 +71,60 @@
                         <TextBlock TextAlignment="Center">Export</TextBlock>
                     </StackPanel>
                 </Button>
+
+                <Grid Grid.Column="5">
+                    <Label Content="App source:" Margin="25,0,0,0" MouseDoubleClick="Label_MouseDoubleClick"/>
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="appPath" 
+                                 HorizontalAlignment="Left" 
+                                 Margin="30,22,0,30" 
+                                 TextWrapping="Wrap" 
+                                 Width="274"/>
+                        <Button x:Name="btnOpenFile" 
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Width="28"
+                            Height="28" 
+                            VerticalAlignment="Top"
+                            Margin="3,18,0,0"
+                            Click="BtnOpenFile_Click">
+                            <StackPanel>
+                                <Image Source="Images/open-file.png" />
+                                <TextBlock TextAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
             </Grid>
 
-            <ListView x:Name="listView"
-                      ScrollViewer.VerticalScrollBarVisibility="Visible"
-                      ScrollViewer.CanContentScroll="True" Height="314" Margin="0,0,0.2,0">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="60"/>
-                        <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Content}" Width="260"/>
-                        <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}" Width="80"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <ListView x:Name="listView"
+                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                      ScrollViewer.CanContentScroll="True" Margin="0,0,0.4,0" Width="412" Height="338">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="60"/>
+                                <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Content}" Width="260"/>
+                                <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}" Width="90"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+
+                <TextBox TextWrapping="Wrap" 
+                         x:Name="inspectBox"
+                         Margin="5,0"
+                         Text="Inspecting..."
+                         IsEnabled="False"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch" Width="355" Height="337"/>
+            </StackPanel>
 
             <Label x:Name="countRecord" Content="0 record(s)"></Label>
+
+
         </StackPanel>
     </Border>
 </Window>

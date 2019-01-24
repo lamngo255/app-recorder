@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -89,6 +90,7 @@ namespace MouseKeyPlayback
             return false;
         }
 
+
         private bool MouseHook_OnMouseMove(int x, int y)
         {
             ProcessMouseEvent(MouseHook.MouseEvents.MouseMove, 0);
@@ -108,7 +110,7 @@ namespace MouseKeyPlayback
         }
         #endregion
 
-        #region Record and playback
+        #region Record/Stop
         private void BtnRecord_Click(object sender, RoutedEventArgs e)
         {
             if (isHooked)
@@ -138,6 +140,8 @@ namespace MouseKeyPlayback
             keyboardHook.Install();
             mouseHook.Install();
             isHooked = true;
+
+            LaunchApp();
         }
 
         private void BtnStop_Click(object sender, RoutedEventArgs e)
@@ -148,12 +152,72 @@ namespace MouseKeyPlayback
         }
         #endregion
 
-        #region Helper methods
+        #region Helper + Logging methods
+
+        private void LaunchApp()
+        {
+            // An app is supposed to launch
+            if (appPath.IsEnabled == false)
+            {
+                System.Diagnostics.Process.Start(appPath.Text);
+            }
+        }
+        private void TrackAutomationElement(Record item)
+        {
+            if (item.Type == Constants.MOUSE
+                && item.EventMouse.Action == MouseHook.MouseEvents.LeftUp)
+            {
+                var windowTitle = Win32Utils.GetActiveWindowTitle();
+                var position = Control.MousePosition;
+
+                Point coordinates = new Point(position.X, position.Y);
+                inspectBox.Text = string.Format("Title: {0}", windowTitle);
+
+                try
+                {
+                    AutomationElement targetApp = AutomationElement.FromPoint(coordinates);
+
+                    inspectBox.Text += "\n";
+                    inspectBox.Text += string.Format("" +
+                        "Name: {0}\n" +
+                        "Automation Id: {1}\n" +
+                        "Text: {2}\n" +
+                        "Control Type: {3}",
+                        targetApp.Current.Name,
+                        targetApp.Current.AutomationId,
+                        GetText(targetApp),
+                        targetApp.Current.ControlType);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Invalid UI element");
+                }
+            }
+        }
+
+        private string GetText(AutomationElement element)
+        {
+            object patternObj;
+            if (element.TryGetCurrentPattern(ValuePattern.Pattern, out patternObj))
+            {
+                var valuePattern = (ValuePattern)patternObj;
+                return valuePattern.Current.Value;
+            }
+            else if (element.TryGetCurrentPattern(TextPattern.Pattern, out patternObj))
+            {
+                var textPattern = (TextPattern)patternObj;
+                return textPattern.DocumentRange.GetText(-1).TrimEnd('\r'); // often there is an extra '\r' hanging off the end.
+            }
+            else
+            {
+                return element.Current.Name;
+            }
+        }
+
         private CursorPoint GetCurrentMousePosition()
         {
             var position = Control.MousePosition;
             return new CursorPoint(position.X, position.Y);
-
         }
 
         private void LogMouseEvents(MouseEvent mEvent)
@@ -187,16 +251,47 @@ namespace MouseKeyPlayback
 
         private void AddRecordItem(Record item)
         {
-            this.listView.Items.Add(item);
+            TrackAutomationElement(item);
+
+            AddToListView(item);
+            //this.listView.Items.Add(item);
             this.recordList.Add(item);
             countRecord.Content = String.Format("{0} records", count.ToString());
         }
+
+        private void AddToListView(Record item)
+        {
+            // Check if two last records are similar
+            if (listView.Items.Count > 0)
+            {
+                var lastItem = (Record)listView.Items[listView.Items.Count - 1];
+                if (lastItem.Type == item.Type)
+                {
+                    switch (item.Type)
+                    {
+                        case Constants.MOUSE:
+                            var lastAction = lastItem.EventMouse.Action;
+                            if (lastAction == MouseHook.MouseEvents.MouseMove
+                                && item.EventMouse.Action == lastAction)
+                                this.listView.Items.RemoveAt(this.listView.Items.Count - 1);
+                            break;
+                        case Constants.KEYBOARD:
+                            break;
+                    }
+                }
+            }
+
+            // satisfy every condition
+            this.listView.Items.Add(item);
+        }
         #endregion
 
+        #region Playback
         private void BtnPlayback_Click(object sender, RoutedEventArgs e)
         {
             if (isHooked)
                 return;
+            LaunchApp();
             foreach (var record in recordList)
             {
                 switch (record.Type)
@@ -210,7 +305,7 @@ namespace MouseKeyPlayback
                     default:
                         break;
                 }
-                Thread.Sleep(7);
+                Thread.Sleep(5);
             }
         }
 
@@ -227,6 +322,29 @@ namespace MouseKeyPlayback
             string action = record.EventKey.Action;
 
             KeyboardUtils.PerformKeyEvent(key, action);
+        }
+        #endregion
+
+        private void BtnOpenFile_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.FileName = "";
+            openDialog.Title = "Application";
+            openDialog.Filter = "All applications|*.exe";
+            openDialog.ShowDialog();
+
+            var appName = openDialog.FileName.ToString();
+            if (!String.IsNullOrEmpty(appName))
+            {
+                appPath.Text = appName;
+                appPath.IsEnabled = false;
+            } 
+        }
+
+        private void Label_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            appPath.Clear();
+            appPath.IsEnabled = true;
         }
     }
 }

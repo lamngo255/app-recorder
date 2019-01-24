@@ -51,6 +51,8 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -71,6 +73,7 @@
     <Compile Include="Helper\Constants.cs" />
     <Compile Include="Helper\KeyboardUtils.cs" />
     <Compile Include="Helper\MouseUtils.cs" />
+    <Compile Include="Helper\Win32Utils.cs" />
     <Compile Include="Library\BaseHook.cs" />
     <Compile Include="Library\LibConstants.cs" />
     <Compile Include="Library\KeyboardHook.cs" />
@@ -128,6 +131,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="app_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\open-file.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
