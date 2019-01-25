@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Computer\Documents\Visual Studio 2017\Projects\MouseKeyPlayback\MouseKeyPlayback\obj\Debug\
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\
 MouseKeyPlayback
 none
 false
 DEBUG;TRACE
-C:\Users\Computer\Documents\Visual Studio 2017\Projects\MouseKeyPlayback\MouseKeyPlayback\App.xaml
-11151548125
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\App.xaml
+5211391333
 
-17-1647673187
+212098259164
 17-554029437
-MainWindow.xaml;
+MainWindow.xaml;Views\CreateInsertKeyWindow.xaml;Views\CreateManualClickWindow.xaml;Views\CreateManualTypeKeyWindow.xaml;Views\CreateWaitWindow.xaml;
 
 False
 

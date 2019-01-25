@@ -15,5 +15,6 @@ namespace MouseKeyPlayback
         public KeyboardEvent EventKey { get; set; }
         public string ElementName { get; set; }
         public string Type { get; set; }
+		public int WaitMs { get; set; }
     }
 }

@@ -48,6 +48,14 @@ namespace MouseKeyPlayback
             Right = MouseEvents.RightDown
         }
 
+		public enum MouseActions
+		{
+			Click,
+			DoubleClick,
+			Up,
+			Down
+		}
+
         public enum MouseEvents
         {
             LeftDown = 0x201,

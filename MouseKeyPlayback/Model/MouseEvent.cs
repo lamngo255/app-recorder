@@ -8,7 +8,7 @@ namespace MouseKeyPlayback
 {
     public class MouseEvent
     {
-        public CursorPoint Location { get; set; }
+		public CursorPoint Location { get; set; }
         public MouseHook.MouseEvents Action { get; set; }
         public int Value { get; set; }
     }

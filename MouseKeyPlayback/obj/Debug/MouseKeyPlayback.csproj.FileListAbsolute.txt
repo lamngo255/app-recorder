@@ -13,3 +13,26 @@ C:\Users\Computer\Documents\Visual Studio 2017\Projects\MouseKeyPlayback\MouseKe
 C:\Users\Computer\Documents\Visual Studio 2017\Projects\MouseKeyPlayback\MouseKeyPlayback\obj\Debug\MouseKeyPlayback.exe
 C:\Users\Computer\Documents\Visual Studio 2017\Projects\MouseKeyPlayback\MouseKeyPlayback\obj\Debug\MouseKeyPlayback.pdb
 C:\Users\Computer\Documents\Visual Studio 2017\Projects\MouseKeyPlayback\MouseKeyPlayback\obj\Debug\MouseKeyPlayback.csprojAssemblyReference.cache
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\bin\Debug\MouseKeyPlayback.exe.config
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\bin\Debug\MouseKeyPlayback.exe
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\bin\Debug\MouseKeyPlayback.pdb
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\MouseKeyPlayback.csprojAssemblyReference.cache
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\MainWindow.g.cs
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\App.g.cs
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\MouseKeyPlayback_MarkupCompile.cache
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\MouseKeyPlayback_MarkupCompile.lref
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\MainWindow.baml
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\MouseKeyPlayback.g.resources
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\MouseKeyPlayback.Properties.Resources.resources
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\MouseKeyPlayback.csproj.GenerateResource.cache
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\MouseKeyPlayback.csproj.CoreCompileInputs.cache
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\MouseKeyPlayback.exe
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\MouseKeyPlayback.pdb
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\Views\CreateManualClickWindow.g.cs
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\Views\CreateManualClickWindow.baml
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\Views\CreateManualTypeKeyWindow.g.cs
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\Views\CreateManualTypeKeyWindow.baml
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\Views\CreateInsertKeyWindow.g.cs
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\Views\CreateInsertKeyWindow.baml
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\Views\CreateWaitWindow.g.cs
+D:\AutoTool\Demo\app-recorder\MouseKeyPlayback\obj\Debug\Views\CreateWaitWindow.baml

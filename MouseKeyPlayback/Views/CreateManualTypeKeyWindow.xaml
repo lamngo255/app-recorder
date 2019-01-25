@@ -1,0 +1,16 @@
+﻿<Window x:Class="MouseKeyPlayback.Views.CreateManualTypeKeyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MouseKeyPlayback.Views"
+        mc:Ignorable="d"
+        Title="Insert text" Height="301.6" Width="300">
+    <Grid>
+        <Label Content="Enter key to insert:" HorizontalAlignment="Left" Margin="27,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.521,0.961" Padding="0,5,5,5"/>
+        <TextBox x:Name="tbxInsert" HorizontalAlignment="Center" Height="146" Margin="0,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
+        <Button x:Name="btnOk" Content="OK" HorizontalAlignment="Left" Margin="114,232,0,0" VerticalAlignment="Top" Width="70" Click="BtnOk_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="197,232,0,0" VerticalAlignment="Top" Width="70" Click="BtnCancel_Click"/>
+
+    </Grid>
+</Window>

@@ -10,8 +10,9 @@ namespace MouseKeyPlayback
     {
         public const string KEYBOARD = "Keyboard";
         public const string MOUSE = "Mouse";
+		public const string WAIT = "WAIT";
 
-        public const int MOUSEEVENT_LEFTDOWN = 0x0002;
+		public const int MOUSEEVENT_LEFTDOWN = 0x0002;
         public const int MOUSEEVENTF_LEFTUP = 0x0004;
         public const int MOUSEEVENTF_RIGHTDOWN = 0x0008;
         public const int MOUSEEVENTF_RIGHTUP = 0x0010;

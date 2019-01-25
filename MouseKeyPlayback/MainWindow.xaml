@@ -5,16 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MouseKeyPlayback"
         mc:Ignorable="d"
-        Title="App Recorder" Height="513.265" Width="800" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="App Recorder" Height="513.265" Width="977.6" Loaded="Window_Loaded" Closed="Window_Closed">
     <Border Padding="5">
         <StackPanel>
             <Grid Margin="0 0 0 10">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="85"/>
-                    <ColumnDefinition Width="85"/>
-                    <ColumnDefinition Width="85"/>
-                    <ColumnDefinition Width="85"/>
-                    <ColumnDefinition Width="85"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
@@ -71,16 +75,52 @@
                         <TextBlock TextAlignment="Center">Export</TextBlock>
                     </StackPanel>
                 </Button>
+                <Button x:Name="btnCreateClick" 
+                        Grid.Column="5" 
+                        Background="Transparent"
+                        BorderThickness="0" Click="BtnCreateClick_Click">
+                    <StackPanel>
+                        <Image Source="Images/mouse_icon.png" Height="81"></Image>
+                        <TextBlock TextAlignment="Center">Click</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnInsertKey" 
+                        Grid.Column="6" 
+                        Background="Transparent"
+                        BorderThickness="0" Click="BtnInsertKey_Click">
+                    <StackPanel>
+                        <Image Source="Images/keyboard.png" Height="81"></Image>
+                        <TextBlock TextAlignment="Center" Text="Key"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnCreateText" 
+                        Grid.Column="7" 
+                        Background="Transparent"
+                        BorderThickness="0" Click="BtnCreateText_Click">
+                    <StackPanel>
+                        <Image Source="Images/cursor-field.png" Height="81"></Image>
+                        <TextBlock TextAlignment="Center" Text="Text"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnWait" 
+                        Grid.Column="8" 
+                        Background="Transparent"
+                        BorderThickness="0" Click="BtnWait_Click">
+                    <StackPanel>
+                        <Image Source="Images/time.jpg" Height="81"></Image>
+                        <TextBlock TextAlignment="Center" Text="Wait"/>
+                    </StackPanel>
+                </Button>
 
-                <Grid Grid.Column="5">
-                    <Label Content="App source:" Margin="25,0,0,0" MouseDoubleClick="Label_MouseDoubleClick"/>
-                    
+                <Grid Grid.Column="9">
+                    <Label Content="App source:" Margin="10,0,0,0" MouseDoubleClick="Label_MouseDoubleClick"/>
+
                     <StackPanel Orientation="Horizontal">
                         <TextBox x:Name="appPath" 
                                  HorizontalAlignment="Left" 
-                                 Margin="30,22,0,30" 
+                                 Margin="10,22,0,30" 
                                  TextWrapping="Wrap" 
-                                 Width="274"/>
+                                 Width="190"/>
                         <Button x:Name="btnOpenFile" 
                             Background="Transparent"
                             BorderThickness="0"
@@ -102,7 +142,7 @@
                 <StackPanel>
                     <ListView x:Name="listView"
                       ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                      ScrollViewer.CanContentScroll="True" Margin="0,0,0.4,0" Width="412" Height="338">
+                      ScrollViewer.CanContentScroll="True" Margin="0,0,0.4,0" Width="514" Height="338" SelectionChanged="ListView_SelectionChanged" MouseLeave="ListView_MouseLeave">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="60"/>
@@ -119,7 +159,7 @@
                          Text="Inspecting..."
                          IsEnabled="False"
                          HorizontalAlignment="Stretch"
-                         VerticalAlignment="Stretch" Width="355" Height="337"/>
+                         VerticalAlignment="Stretch" Width="445" Height="337"/>
             </StackPanel>
 
             <Label x:Name="countRecord" Content="0 record(s)"></Label>
