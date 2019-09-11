@@ -400,25 +400,33 @@ namespace MouseKeyPlayback
         {
             if (isHooked)
                 return;
-            LaunchApp();
-            foreach (var record in recordList)
-            {
-                switch (record.Type)
-                {
-                    case Constants.MOUSE:
-                        PlaybackMouse(record);
-                        break;
-                    case Constants.KEYBOARD:
-                        PlaybackKeyboard(record);
-                        break;
-					case Constants.WAIT:
-						Thread.Sleep(record.WaitMs);
-						break;
-                    default:
-                        break;
+
+            int num;
+            if (int.TryParse(repeatTime.Text, out num)) {
+                for (int i = 0; i < num; ++i) {
+                    LaunchApp();
+
+                    foreach (var record in recordList) {
+                        switch (record.Type) {
+                            case Constants.MOUSE:
+                                PlaybackMouse(record);
+                                break;
+                            case Constants.KEYBOARD:
+                                PlaybackKeyboard(record);
+                                break;
+                            case Constants.WAIT:
+                                Thread.Sleep(record.WaitMs);
+                                break;
+                            default:
+                                break;
+                        }
+                        Thread.Sleep(4);
+                    }
+
+                    Thread.Sleep(10);
                 }
-                Thread.Sleep(5);
             }
+            
         }
 
         private void PlaybackMouse(Record record)
