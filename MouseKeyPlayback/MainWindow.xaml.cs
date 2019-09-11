@@ -425,6 +425,8 @@ namespace MouseKeyPlayback
 
                     Thread.Sleep(10);
                 }
+            } else {
+                System.Windows.MessageBox.Show("Repeat time is not valid!");
             }
             
         }
